@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout::layout(~{::#content})}">
+<div class=" mx-auto" style="padding-top: 80px" id="content">
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <a th:href="@{/}" data-modal-target="default-modal" style="max-width: 140px" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+      Go Back
+    </a>
+    <div class="" style="justify-content: space-between;display: flex;padding: 20px 10px">
+      <h2 class="text-2xl">Table List</h2>
+      <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+        Create New Table
+      </button>
+    </div>
+    <table id="default-table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">
+          SN
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Name
+        </th>
+        <th scope="col" class="px-6 py-3">
+          Action
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="table, iterStat :${databaseTable}" class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" th:text="${iterStat.count}">
+          Apple MacBook Pro 17"
+        </th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" th:text="${table}">
+          Apple MacBook Pro 17"
+        </th>
+        <td class="px-6 py-4">
+          <a th:href="@{/open-tables/{id}/{tableName}(id=${id},tableName=${table})}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Open</a>
+          <!--          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>-->
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</html>
